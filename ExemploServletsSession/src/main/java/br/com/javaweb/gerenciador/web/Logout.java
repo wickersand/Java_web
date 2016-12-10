@@ -1,6 +1,8 @@
 package br.com.javaweb.gerenciador.web;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,9 +47,19 @@ public class Logout extends HttpServlet {
 
 			session.removeAttribute("usuario.logado");
 			session.invalidate();
-			response.sendRedirect("/ExemploServletsSession/logout.html");
+			/*
+			 * Desprotegido - usuario pode digitar o URL e deslogar via atributo
+			 * no browser.
+			 */
+			// response.sendRedirect("/ExemploServletsSession/logout.html");
+			
+			/*
+			 * Protegido - usuario nao tem acesso para digitar URL logout.html direto no browser.
+			 */
 		}
 
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/paginas/logout.html");
+		dispatcher.forward(request, response);
 	}
 
 }

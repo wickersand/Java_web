@@ -52,7 +52,7 @@ public class Login extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("usuario.logado", usuario);
-			response.sendRedirect("/ExemploServletsSession/index.html"); //Redireciona para o html principal.
+			response.sendRedirect("/ExemploServletsSession/index.jsp"); //Redireciona para o html principal.
 		}
 		
 	}

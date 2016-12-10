@@ -37,6 +37,17 @@ public class BuscaEmpresa extends HttpServlet {
 		
 		String filtro = request.getParameter("filtro");
 		
+		/*
+		 * Simulando problema de concorrencia de variaveis.
+		 */
+		// filtro = request.getParameter("filtro");
+
+		// dormindo por 10 segundos - tempo para simular...
+		/*
+		 * try { Thread.sleep(5000); } catch (InterruptedException e) {
+		 * e.printStackTrace(); }
+		 */
+		
 		Collection<Empresa> empresas = new EmpresaDAO().buscaPorSimilaridade(filtro);
 		
 		new EmpresaDAO().buscaPorSimilaridade(filtro);

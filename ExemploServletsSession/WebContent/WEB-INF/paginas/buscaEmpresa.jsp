@@ -1,7 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<title>Login Form</title>
+<meta charset="UTF-8">
+<title>Busca Empresas</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -30,30 +34,22 @@
 			<div class="collapse navbar-collapse" id="myNavbar"></div>
 		</div>
 	</nav>
-
-	<div>
-		<div class="container">
-			<div class="col-md-6">
-				<div id="frmCriarEmpresa">
-					<h3>Adicionar nova Empresa:</h3>
-					<form action="addcompany" method="post">
-						<input type="text" name="nome" /><br /> 
-						<input type="submit" value="Enviar" />
-<!-- 						Colocar uma funcao para limpar o textfield -->
-					</form>
-				</div>
-			</div>
-		</div>
+	<br />
+	<div class="alert alert-success">
+		<strong>Resultado da Busca:</strong>
+		<ul>
+ 			<c:forEach var="empresa" items="${empresas}">  <%-- Lista as empresas que foram encontradas... por ID --%>
+				<li>${empresa.id}:${empresa.nome}</li>
+			</c:forEach>
+		</ul>
 	</div>
-	
-	<div class="container">
-			<div class="col-md-6">
-				<div id="frmBuscarEmpresa">
-					<h3>Lista de Empresas Cadastradas</h3>
-					<form action="busca" method="post"> <input type="submit" value="Buscar" />
-					</form>
-				</div>
-			</div>
-		</div>
+
+	<button onclick="goBack()">Voltar</button>
+
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
 </body>
 </html>
