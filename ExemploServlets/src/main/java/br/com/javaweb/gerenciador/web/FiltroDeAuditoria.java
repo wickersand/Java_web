@@ -45,12 +45,12 @@ public class FiltroDeAuditoria implements Filter {
 		String usuario = "<deslogado>";
 		
 		if (cookie != null) {
-			cookie.setMaxAge(60*10);
+			cookie.setMaxAge(60*10); // 10 minutos de cycle life...
 			resp.addCookie(cookie);
 			usuario = cookie.getValue();
 		}
 			
-		System.out.println("Usuario " + usuario + "acessando " + req.getRequestURI());
+		System.out.println("Usuario " + usuario + " acessando " + req.getRequestURI());
 
 		// pass the request along the filter chain
 		chain.doFilter(request, response);

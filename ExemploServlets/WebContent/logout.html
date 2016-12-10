@@ -27,33 +27,21 @@
 				<a class="navbar-brand" href="#">@Dextraining - Java Web</a>
 
 			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-
-	        <ul class="nav navbar-nav navbar-right">
-	            <li>
-	            	<div id="logout">
-	            	<form id="frmLogout" action="logout" method="post">
-	            		<br/>
-						<input type="submit" value="logout" />
-					</form>
-					</div>	
-	            </li>
-	        </ul>						
-		</div>
+			<div class="collapse navbar-collapse" id="myNavbar"></div>
 		</div>
 	</nav>
 
-	<h3>Bem vindo ao nosso sistema Java Web!<br/></h3>
-	<br/>
-	<hr>
-	<div id="frmCriarEmpresa">
-		<h3>Adicionar nova empresa:</h3>
-		<form id="novaEmpresa" action="addcompany" method="post">
-			Nome: <input type="text" name="nome" />
-			<br/>
-			<br/>
-			<input type="submit" value="Enviar" />
-		</form>
+	<div>
+		<div class="container">
+			<div class="col-md-6">
+				<div id="logbox">
+					<form id="signout" action="logout">
+						<h1>Logout Efetuado!!!</h1>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
+
 </body>
 </html>

@@ -1,15 +1,58 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Login Form</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"
+	type="text/javascript"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+	type="text/javascript"></script>
+
+</head>
 <body>
-	<h3>
-		Bem vindo ao nosso gerenciador de empresas! <br />
-	</h3>
-	<hr>
-	<div id="frmCriarEmpresa">
-		<h3>Adicionar nova Empresa:</h3>
-		<form action="addcompany" method="post">
-			<input type="text" name="nome" /><br/> 
-			<input type="submit" value="Enviar" />
-		</form>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+
+				<a class="navbar-brand" href="#">@Dextraining - Java Web</a>
+
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar"></div>
+		</div>
+	</nav>
+
+	<div>
+		<div class="container">
+			<div class="col-md-6">
+				<div id="frmCriarEmpresa">
+					<h3>Adicionar nova Empresa:</h3>
+					<form action="addcompany" method="post">
+						<input type="text" name="nome" /><br /> <input type="submit"
+							value="Enviar" />
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
-</body>	
+	
+	<div class="container">
+			<div class="col-md-6">
+				<div id="frmBuscarEmpresa">
+					<h3>Lista de Empresas Cadastradas</h3>
+					<form action="busca" method="post"> <input type="submit" value="Buscar" />
+					</form>
+				</div>
+			</div>
+		</div>
+</body>
 </html>

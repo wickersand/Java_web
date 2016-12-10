@@ -8,20 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.javaweb.gerenciador.Usuario;
-import br.com.javaweb.gerenciador.dao.UsuarioDAO;
-
 /**
- * Servlet implementation class UserLogin
+ * Servlet implementation class Logout
  */
-@WebServlet("/login")
-public class Login extends HttpServlet {
+@WebServlet("/logout")
+public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Login() {
+	public Logout() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -42,21 +39,17 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// TODO Auto-generated method stub
 
-		String email = request.getParameter("email"); //Cria objeto email
-		String senha = request.getParameter("senha"); //Cria objeto senha
-
-		Usuario usuario = new UsuarioDAO().buscaPorEmailESenha(email, senha); //chama metodo Usuario onde contem email e senha.
-
-		if (usuario == null) {
-
-			response.sendRedirect("/ExemploServlets/errorlogin.html");//Redireciona para html de erro!
-
-		} else {
-			Cookie cookie = new Cookie("usuario.logado", email);
-			response.addCookie(cookie);
-			response.sendRedirect("/ExemploServlets/index.html"); //Redireciona para o html principal.
+		Cookie cookie = new Cookies(request.getCookies()).buscaUsuarioLogado();
+		if (cookie == null) {
+			response.sendRedirect("/ExemploServlets/logout.html");
+			return;
 		}
+		// Matando o cookie
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
+		response.sendRedirect("/ExemploServlets/logout.html");
 
 		doGet(request, response);
 	}
