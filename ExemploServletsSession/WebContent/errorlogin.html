@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<title>Login Form</title>
+<meta charset="UTF-8">
+<title>Login - Erro</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -28,46 +29,17 @@
 
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
-
-				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<div id="logout">
-							<form id="frmLogout" action="logout" method="post">
-								<br /> <input type="submit" value="logout" />
-							</form>
-						</div>
-					</li>
-				</ul>
-			</div>
+		</div>
 		</div>
 	</nav>
-
-	<h3>
-		Bem vindo ao nosso sistema Java Web!<br />
-	</h3>
-	<br />
-	<hr>
-	<div class="container">
-		<div class="col-md-6">
-			<div id="frmCriarEmpresa">
-				<h3>Adicionar nova Empresa:</h3>
-				<form action="addcompany" method="post">
-					<input type="text" name="nome" /><br /> <input type="submit"
-						value="Enviar" />
-				</form>
-			</div>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="col-md-6">
-			<div id="frmBuscarEmpresa">
-				<h3>Lista de Empresas Cadastradas</h3>
-				<form action="busca" method="post">
-					<input type="submit" value="Buscar" />
-				</form>
-			</div>
-		</div>
+	<br/>
+	<div class="alert alert-danger">
+		<strong>Erro!</strong> Usuário e/ou Senha Inválidos.
+		<form action="/ExemploServletsSession/login.html">
+			<br/>
+			<hr>
+			<input type="submit" class="btn btn-danger" value="voltar">
+		</form>
 	</div>
 </body>
 </html>

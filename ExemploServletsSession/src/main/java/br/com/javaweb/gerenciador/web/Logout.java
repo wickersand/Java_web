@@ -3,15 +3,15 @@ package br.com.javaweb.gerenciador.web;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Logout
+ * Servlet implementation class LogoutSession
  */
-@WebServlet("/logout")
+@WebServlet("/logoutsession")
 public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -39,17 +39,14 @@ public class Logout extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
-		Cookie cookie = new Cookies(request.getCookies()).buscaUsuarioLogado();
-		if (cookie == null) {
-			response.sendRedirect("/ExemploServlets/logout.html");
-			return;
+		HttpSession session = request.getSession();
+		if (session.getAttribute("usuario.logado") != null) {
+
+			session.removeAttribute("usuario.logado");
+			session.invalidate();
+			response.sendRedirect("/ExemploServletsSession/logout.html");
 		}
-		// Matando o cookie
-		cookie.setMaxAge(0);
-		response.addCookie(cookie);
-		response.sendRedirect("/ExemploServlets/logout.html");
 
 	}
 

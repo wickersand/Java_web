@@ -1,24 +1,27 @@
 package br.com.javaweb.gerenciador.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import br.com.javaweb.gerenciador.Empresa;
+import br.com.javaweb.gerenciador.dao.EmpresaDAO;
 
 /**
- * Servlet implementation class Logout
+ * Servlet implementation class AdicionarEmpresa
  */
-@WebServlet("/logout")
-public class Logout extends HttpServlet {
+@WebServlet("/addcompany")
+public class AdicionarEmpresa extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Logout() {
+	public AdicionarEmpresa() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -39,18 +42,20 @@ public class Logout extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
-		Cookie cookie = new Cookies(request.getCookies()).buscaUsuarioLogado();
-		if (cookie == null) {
-			response.sendRedirect("/ExemploServlets/logout.html");
-			return;
-		}
-		// Matando o cookie
-		cookie.setMaxAge(0);
-		response.addCookie(cookie);
-		response.sendRedirect("/ExemploServlets/logout.html");
+		String nome = request.getParameter("nome"); // Criar objeto nome
+		int statusCode = HttpServletResponse.SC_OK; //Retorna o Status Code (200 = PASS)
+		Empresa empresa = new Empresa(nome); // Criar objeto empresa
+		new EmpresaDAO().adiciona(empresa); //Invocar o metodo adiciona da EmpresaDAO
+		PrintWriter writer = response.getWriter(); //Criar buffer do writer - arcaico
+		writer.println("<html><body>Empresa " 
+				+ nome 
+				+ " Adicionada com Sucesso!" 
+				+ " Status: \n" 
+				+ statusCode
+				+ "</body></html>");
 
+		doGet(request, response);
 	}
 
 }
