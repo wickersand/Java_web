@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+	<h:form>
+	
+	<p:fieldset legend="Criar Novos Usuários" style="margin-bottom:20px">
+        <h:panelGrid columns="2" cellpadding="5">
+			<p:panel>
+			  Login: <p:inputText id="login" value="#{usuarioMB.usuario.login}" />
+			</p:panel>
+			
+			<p:panel>
+	       	 Senha: <p:password id="senha" value="#{usuarioMB.usuario.senha}" />
+			</p:panel>
+		</h:panelGrid>
+    </p:fieldset>
+		<p:commandButton value="Criar Usuario" action="#{usuarioMB.salvar}" />
+      	 
+	</h:form>
+</h:body>
+</html>

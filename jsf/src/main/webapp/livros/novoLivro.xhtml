@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="/layout.xhtml">
+
+	
+    <ui:define name="conteudo">
+      	<h:form id="formNovoLivro" prependId="false">
+    	<p:growl id="growl" showDetail="true" /> 
+    	<p:fieldset legend="Novo Livro">
+       	 <p:panel>
+       	 <p:outputLabel>Digite o Nome do Livro:</p:outputLabel><p:inputText label="Nome Livro" id="nome" value="#{livrosMB.livro.nome}" required="true" />
+       	 </p:panel>
+       	 <p:panel>
+       	 <p:outputLabel>Digite o Autor do Livro:</p:outputLabel><p:inputText id="Autor" value="#{livrosMB.livro.autor}" required="true"/>
+      	 </p:panel>
+       	 <p:commandButton id="botaoSalvar" value="Salvar" action="#{livrosMB.salvar}"/>
+       	 <p:commandButton id="botaoVoltar" value="Voltar" immediate="true" action="listagem.jsf?faces-redirect=true"/>
+       	 </p:fieldset>
+
+        </h:form>
+</ui:define></ui:composition>  
