@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">  
+  
+    <h:head>  
+  
+    </h:head>  
+      
+    <h:body>
+      	<h:form id="formLogin" prependId="false">
+    	<p:growl id="growl" showDetail="false" /> 
+    	 <p:outputPanel rendered="#{!loginMB.logado and loginMB.usuario.login != null}">
+       	 	Usuário ou senha Inválidos
+       	 </p:outputPanel>
+      	<p:panel>
+       	 Login: <p:inputText label="Nome do Usuario" id="login" value="#{loginMB.usuario.login}" required="true">
+       	 	<f:validator validatorId="cpfValidator"/>
+       	 </p:inputText>
+       	 </p:panel>
+       	 <p:panel>
+       	 Senha: <p:password id="senha" value="#{loginMB.usuario.senha}"  required="true"/>
+       	 </p:panel>
+       	 <p:commandButton id="botaoLogin" value="Login" action="#{loginMB.login}" update="@form"/>
+       	 <p:outputPanel rendered="#{loginMB.logado}">
+       	 	Logado !!!
+       	 </p:outputPanel>
+        </h:form>
+    </h:body>  
+</html>  
