@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:my="http://java.sun.com/jsf/composite/component">
+<f:view contentType="text/html" />
+<h:head>
+	<title>Blog</title>
+</h:head>
+<h:body>
+	<h2>Bem vindo ao Blog</h2>
+
+	<h:panelGrid rendered="#{request.isUserInRole('usuario')}">
+		<h3>Exemplo JPA - Blog</h3>
+		<h:form>
+			<h:commandButton value="Ver posts" action="#{listarPostsMB.listar}" />
+		</h:form>
+	</h:panelGrid>
+
+	<h:panelGrid rendered="#{request.isUserInRole('administrador')}" >
+		<h3>Stateless x Stateful</h3>
+		<h:form>
+			<h:commandButton value="stateless" action="#{testarSessionBeanMB.testarStateless}" />
+			<h:commandButton value="stateful" action="#{testarSessionBeanMB.testarStateful}" />
+		</h:form>
+		<h3>Exemplo JMS</h3>
+		<h:form>
+			<h:commandButton value="Enviar msg" action="#{testarMensagemMB.enviarMensagem}" />
+		</h:form>
+		<h3>Exemplo Timer</h3>
+		<h:form>
+			<h:commandButton value="Agendar" action="#{testarTimerMB.agendar}" />
+			<h:commandButton value="Cancelar" action="#{testarTimerMB.cancelar}" />
+		</h:form>
+		<h3>Exemplo WS</h3>
+		<h:form>
+			<h:commandButton value="Testar Chamada WS" action="#{testarWebServiceMB.testarChamada}" />
+		</h:form>
+		<h2>Exemplo incluir post via WS</h2>
+	
+		<h:form>
+			<h:outputLabel for="titulo" value="Titulo:" />
+			<h:inputText id="titulo" value="#{testarWebServiceMB.titulo}" />
+	
+			<h:outputLabel for="descricao" value="Descricao:" />
+			<h:inputText id="descricao" value="#{testarWebServiceMB.descricao}" />
+	
+			<h:commandButton value="Salvar" action="#{testarWebServiceMB.salvarPost}" />
+		</h:form>
+		<h2>Exemplo Testar Transações</h2>
+		<h:form>
+			<h:commandButton value="Required" action="#{testarTransacoesMB.testarRequired}" />
+			<h:commandButton value="Requires New" action="#{testarTransacoesMB.testarRequiresNew}" />
+		</h:form>
+	</h:panelGrid>
+	
+	<h:form>
+		<h:commandButton value="Logout" action="#{logOutMB.logOut}" />
+	</h:form>
+		
+</h:body>
+</html>
